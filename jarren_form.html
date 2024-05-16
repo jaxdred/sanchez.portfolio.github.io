@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Survey Form</title>
+      <link rel="stylesheet" href="jarren_styles.css"/>
+    </head>
+    <body>
+      <h1 id="title">Jarren Survey Form</h1>
+      <p id="description">Please answer my survey form. Thank you! 
+      </p>
+      <form id="survey-form" action="submit.php" method="post" onsubmit="showAlert()">
+        <fieldset>
+          <label for="name" id="name-label">
+            Enter Your Full Name: <br>
+          </label> 
+          
+          <input id="name" name="name" type="text" placeholder="Rick Sanchez" required/> <br>
+
+          <label for="email" id="email-label">
+            Enter Your E-mail Address: <br>
+          </label>
+
+          <input id="email" name="email" type="email" placeholder="name@website.com" required/> <br>
+
+          <label for="number" id="number-label">
+            Enter Your Mobile Number (11 digits): <br>
+          </label>
+        
+
+          <input id="number" name="number" type="number" pattern="[0-9]{11}" placeholder="09123456789" required oninput="checkLength(this)" />
+
+        </fieldset>
+
+        <fieldset>
+          <legend>
+            What is your relationship with Jarren?<br>
+          </legend>
+
+          <select id="relationship" name="relationship">
+            <option value="0">(Select one)</option>
+            <option value="Stranger">Stranger</option>
+            <option value="Friend">Friend</option>
+            <option value="Family">Family</option>
+            <option value="Lover">Lover</option>
+            <option value="Other">Other</option>
+          </select>
+        </fieldset>
+
+        <fieldset>
+          <legend>Is Jarren a good human being?</legend>
+          <label for="definitely"><input id="definitely" type="radio" name="goodness" class="inline" value="Yes" checked/> Definitely
+          </label>
+          <label for="maybe"><input id="maybe" type="radio" name="goodness" class="inline" value="Maybe"/> Maybe
+          </label>
+          <label for="no"><input id="no" type="radio" name="goodness" class="inline" value="No"/> Not at all
+          </label>
+        </fieldset>
+        
+        <fieldset>
+          <legend>Select the attributes that describe Jarren  
+          </legend>
+
+          <label for="checkbox1">
+            <input id="checkbox1" type="checkbox" name="attributes[]" value="Friendly"/> Friendly <br>
+          </label>
+
+          <label for="checkbox2">
+            <input id="checkbox2" type="checkbox" name="attributes[]" value="Funny"/> Funny <br>
+          </label>
+
+          <label for="checkbox3">
+            <input id="checkbox3" type="checkbox" name="attributes[]" value="Smart"/> Smart <br>
+         </label>
+
+          <label for="checkbox4">
+            <input id="checkbox4" type="checkbox" name="attributes[]" value="Good-Looking"/> Good-Looking <br>
+          </label>
+
+          <label for="checkbox5">
+            <input id="checkbox5" type="checkbox" name="attributes[]" value="Humble"/> Humble <br>
+          </label>
+
+          <label for="checkbox6">
+            <input id="checkbox6" type="checkbox" name="attributes[]" value="Quiet"/> Quiet <br>
+          </label>
+
+          <label for="checkbox7">
+            <input id="checkbox7" type="checkbox" name="attributes[]" value="Polite"/> Polite <br>
+         </label>
+
+         <label for="checkbox8">
+            <input id="checkbox8" type="checkbox" name="attributes[]" value="Honest"/> Honest <br>
+          </label>
+
+          <label for="checkbox9">
+           <input id="checkbox9" type="checkbox" name="attributes[]" value="Loyal"/> Loyal <br>
+          </label>
+
+          <label for="checkbox10">
+            <input id="checkbox10" type="checkbox" name="attributes[]" value="Cool"/> Cool <br>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Please state the reason behind your good/bad rating:
+          </legend>
+
+          <textarea id="add" name="add" rows="3" cols="30" placeholder="Jarren is the best..."></textarea> <br>
+
+          <input type="submit" value="Submit" id="submit"/>
+
+        </fieldset>
+      </form>
+
+    <script>
+    function showAlert() {
+      alert("Submitted Successfully!");
+    }
+    </script>
+
+    <script>
+function checkLength(input) {
+  if (input.value.length > 11) {
+    input.value = input.value.slice(0, 11); // Trim input to 11 characters
+  }
+}
+    </script>
+    </body>
+  </html>
