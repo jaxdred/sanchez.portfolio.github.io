@@ -13,11 +13,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
 }
 
 h1 {
     margin: 0 auto;
-    font-size: 50px;
+    font-size: 50px; /* Retain original font size for desktop */
     margin-bottom: 5px;
 }
 
@@ -41,10 +42,11 @@ a#tribute_page {
     background-blend-mode: multiply, screen;
     min-height: 100vh; /* Ensure the background covers the entire viewport height */
 }
+
 #projects {
     text-align: center;
     padding: 20px; /* Adjust padding as needed */
-    margin-top: 100px;
+    margin-top: 100px; /* Retain original margin for desktop */
 }
 
     #projects .projects {
@@ -97,18 +99,18 @@ a#tribute_page {
     #projects h1 {
         margin-bottom: 20px; /* Adjust margin as needed */
         text-align: center; /* Center the h1 */
-        font-size: 40px;
+        font-size: 40px; /* Retain original font size for desktop */
     }
 
 #author-info {
     text-align: center;
     padding: 20px;
-    margin-top: 40px;
+    margin-top: 40px; /* Retain original margin for desktop */
 }
 
     #author-info h1 {
-        font-size: 45px;
-        margin-bottom: 40px;
+        font-size: 45px; /* Retain original font size for desktop */
+        margin-bottom: 40px; /* Retain original margin for desktop */
     }
 
 .author-details {
@@ -122,16 +124,16 @@ a#tribute_page {
     }
 
 .hide {
-  opacity: 0;
-  transition: opacity 0.75s ease; /* Add transition effect */
+    opacity: 0;
+    transition: opacity 0.75s ease; /* Add transition effect */
 }
 
 .author-image {
-    margin-right: 120px;
+    margin-right: 120px; /* Retain original margin for desktop */
 }
 
     .author-image img {
-        width: 300px;
+        width: 300px; /* Retain original size for desktop */
         border-radius: 50%;
         vertical-align: middle; /* Align the image vertically */
     }
@@ -149,7 +151,6 @@ a#tribute_page {
         font-size: 20px;
     }
 
-
 .detail {
     margin-bottom: 20px;
     display: flex; /* Use flexbox for alignment */
@@ -162,34 +163,142 @@ a#tribute_page {
     }
 
 .external-sites {
-    margin-top: 175px;
+    margin-top: 175px; /* Retain original margin for desktop */
     align-items: center;
 }
 
-.fb img {
-    width: 20px; /* Adjust the size of the Facebook icon */
+.fb img,
+.indeed img {
+    width: 20px; /* Retain original size for desktop */
     height: auto;
     transition: transform 0.3s; /* Add transition for smooth hover effect */
     margin-right: 25px;
 }
 
-    .fb img:hover {
-        transform: scale(1.1); /* Scale the icon on hover */
-    }
-
-.indeed img {
-    width: 20px; /* Adjust the size of the Facebook icon */
-    height: auto;
-    transition: transform 0.3s; /* Add transition for smooth hover effect */
-}
-
+    .fb img:hover,
     .indeed img:hover {
         transform: scale(1.1); /* Scale the icon on hover */
     }
 
-
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
     h1 {
-        font-size: 20px; /* Adjust font size for smaller screens */
+        font-size: 30px; /* Adjust font size for medium screens */
+    }
+
+    #projects .projects {
+        gap: 50px; /* Adjust gap for medium screens */
+    }
+
+    #author-info h1 {
+        font-size: 30px; /* Adjust font size for medium screens */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    header {
+        display: block;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 24px; /* Adjust font size for small screens */
+    }
+
+    .projects {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+        .projects .project-tile {
+            width: 90%; /* Adjust width for better responsiveness */
+            max-width: 250px; /* Ensure it doesn't get too large */
+            margin-bottom: 20px; /* Add bottom margin for spacing */
+            margin-left: 11px;
+        }
+
+    #projects {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px; /* Adjust margin for small screens */
+    }
+
+        #projects .projects {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px; /* Adjust gap for small screens */
+            width: 90%; /* Adjust width for better responsiveness */
+            max-width: none; /* Ensure it takes full width of the parent container */
+            margin: 0 auto; /* Center the container itself */
+        }
+
+            #projects .projects .project-tile {
+                width: 90%; /* Adjust width for better responsiveness */
+                max-width: 250px; /* Ensure it doesn't get too large */
+            }
+
+    #author-info {
+        margin-top: 20px; /* Adjust margin for small screens */
+    }
+
+        #author-info h1 {
+            font-size: 24px; /* Adjust font size for small screens */
+            margin-bottom: 20px; /* Adjust margin for small screens */
+        }
+
+    .author-details {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: center;
+    }
+
+    .author-image {
+        margin-right: 0; /* Remove margin for small screens */
+        margin-bottom: 20px; /* Add bottom margin for spacing */
+    }
+
+        .author-image img {
+            width: 150px; /* Adjust size for better responsiveness */
+        }
+
+    .details {
+        text-align: center; /* Center details for better mobile view */
+    }
+
+    @media only screen and (max-width: 480px) {
+        .detail {
+            flex-direction: row; /* Keep details in a row */
+            justify-content: flex-start; /* Center items horizontally */
+            margin-bottom: 15px; /* Adjust margin for spacing */
+        }
+
+            .detail img {
+                width: 30px; /* Adjust size for better responsiveness */
+                margin-right: 10px; /* Maintain space between icon and text */
+                margin-bottom: 0; /* Remove bottom margin */
+            }
+
+            .detail p {
+                font-size: 16px; /* Adjust font size for better readability on mobile */
+                margin: 0; /* Remove margin */
+            }
+    }
+
+    .external-sites {
+        margin-top: 40px; /* Adjust margin for better spacing on mobile */
+        text-align: center; /* Center icons for better mobile view */
+    }
+
+        .external-sites a {
+            margin: 0 -50px; /* Add some spacing between icons */
+            margin-left: 99px;
+        }
+
+    .fb img,
+    .indeed img {
+        width: 30px; /* Adjust size for better responsiveness */
     }
 }
