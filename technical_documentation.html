@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIGAW: Technical Documentation</title>
+  <link reL="stylesheet" href="techdocstyles.css" />
+</head>
+<body>
+  <nav id="navbar">
+    <header>LIGAW Documentation</header>
+    <a class="nav-link" href="#Introduction">Introduction</a>
+    <a class="nav-link" href="#Controls">Controls</a>
+    <a class="nav-link" href="#Stages">Stages</a>
+    <a class="nav-link" href="#Interactions">Interactions</a>
+    <a class="nav-link" href="#Beating_the_Game">Beating the Game</a>
+    <a class="nav-link" href="#Credits">Credits</a>
+  </nav>
+  <main id="main-doc">
+    <section class="main-section" id="Introduction">
+      <header>Introduction</header>
+      <p>Ligaw is a First Person Horror game for Android devices. It is a project that was created by Third Year Computer Science students, through Unity Game Engine.
+      </p>
+      <p>Ligaw is inspired by games like Slendrina and Granny. This game was made under two semesters, and was finished by May 2024.
+      </p>
+    </section>
+    <section class="main-section" id="Controls">
+      <header>Controls</header>
+      <p>The controls of this game are utilized by tapping and/or swiping the screen and the buttons in it which have their own functions:</p>
+      <ul>
+        <li><strong>Looking around:</strong> Looking around in this game is done by swiping the screen wherever you would like to look at.</li>
+        <li><strong>Moving:</strong> Moving, or walking around in this game is done by pressing and holding the movement button in the left side, and then dragging it to the direction where you would like to move.</li>
+        <li><strong>Interact:</strong> Interacting with the various objects in this game is done by looking at the object you would like to interact with by swiping the screen, and then pressing the interact button which performs a specific animation based on the object's context.</li>
+        <li><strong>Toggle Objects:</strong> You can toggle or perform specific movements with the player by pressing the sprint, and jump buttons. Also, you can toggle specific objects that the player may obtain such as the flashlight and map, by pressing their respective buttons in the lower area.</li>
+        <li><strong>Menu:</strong> In the menus that appear on screen, you just need to press the buttons that will perform their respective functions. While in game, you can also pause the game or access the menu and settings by pressing the back button from your device.</li>
+      </ul>
+    </section>
+    <section class="main-section" id="Stages">
+      <header>Stages</header>
+      <p>The game has five stages. Each increasing in difficulty as the game advances/progresses. The difficulty is adjusted by the quantity of objects necessary to advance to the next stage, and the map complexity.</p>
+      <p>The game contains a lot of different game objects that the player can interact with in order to perform an action, find an object, pick up, toggle switches, and more.</p>
+      <p>Here are the different game objects that the player can interact with:</p>
+      <ul>
+      <li>Key</li>
+      <li>Map</li>
+      <li>Puzzle Piece</li>
+      <li>Flashlight</li>
+      <li>Furniture</li>
+      <li>Door</li>
+      <li>Switch</li>
+      </ul>
+    </section>
+    <section class="main-section" id="Interactions">
+      <header>Interactions</header>
+      <p>There are certain interactions in the game that are activated by their respective triggers.</p>
+      <p>Here is a snippet of the C# code for a jumpscare which is triggered if the player walks through the trigger game object.</p>
+      <code>
+            void OnTriggerEnter(Collider other)
+            {
+                if (other.CompareTag("Player"))
+                {
+                    player.SetActive(false);
+                    chasefxSource.enabled = false;
+                    monsterAnim.SetTrigger("jumpscare");
+                    StartCoroutine(jumpscare());
+                }
+            }
+      </code>
+      <p>Here is a snippet of the C# code used to pick up keys that are used to open locked doors:
+      <code>
+    public void Interact()
+    {
+        if (interactable && !interacting)
+        {
+            PickupKey();
+        }
+    }
+
+    void PickupKey()
+    {
+        inttext.SetActive(false);
+        interacting = true;
+        pickup.Play();
+        if (scaryEvent)
+        {
+            spookystuff.SetActive(true);
+        }
+        key.SetActive(false);
+
+        // Notify state change
+        OnStateChanged?.Invoke();
+    }
+}
+      </code>
+      <p>Here is another C# code snippet that is used to open/close doors. And opening locked doors using keys:</p>
+      <code>
+    void ToggleDoor()
+    {
+        toggle = !toggle;
+        if (toggle)
+        {
+            doorAnim.ResetTrigger("close");
+            doorAnim.SetTrigger("open");
+        }
+        else
+        {
+            doorAnim.ResetTrigger("open");
+            doorAnim.SetTrigger("close");
+        }
+        intText.SetActive(false);
+        interactable = false;
+    }
+      </code>
+      <p>Here is a snippet of the C# code that is used by the AI monster to patrol to random destinations around the map:
+      </p>
+      <code>
+        void Start()
+{
+    walking = true;
+    randNum = Random.Range(0, 8);
+    aiAnim.SetTrigger("walk");
+    if (randNum == 0)
+    {
+        dest = randDest1.position;
+    }
+    if (randNum == 1)
+    {
+        dest = randDest2.position;
+    }
+// ~and so forth
+      </code>
+      <p>Lastly, here is a C# code snippet that is used to make the AI monster open and close doors when walking into it.
+      </p>
+      <code>
+            private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("monster"))
+        {
+            doorAnimator.SetTrigger("open");
+        }
+    }
+}
+      </code>
+    </section>
+    <section class="main-section" id="Beating_the_Game">
+      <header>Beating the Game</header>
+      <p>Players can beat the game by finishing all of the stages, and proceeding to escape the house by exiting the gate on the final stage. To accomplish that, the player needs to navigate around the location, and find keys that will unlock the door to the next level.
+      </p>
+    </section>
+    <section class="main-section" id="Credits">
+      <header>Credits</header>
+      <p>This project was created by a group of Third Year Computer Science students from Asian Institute Of Computer Studies - Bicutan. This Game was made possible by the works of:
+      </p>
+      <ul>
+        <li>Jarren Red Sanchez</li>
+        <li>Ralph Eco</li>
+        <li>Lester Mark Ortega</li>
+        <li>Ernelyn Crisostomo</li>
+        <li>Ma. Rose Cavalida</li>
+        <li>Daniella Villareal</li>
+        <li>Antonio Ramirez</li>
+        <li>Kyla Sofia Cañas</li>
+      </ul>
+      <p>This game would also like to credit Slendrina and Granny for being its inspiration. For the game development basic tutorial, we would like to thank Omogonix. For the game assets and audio, we would like to thank various creators from the Unity Asset Store, and YouTube. And lastly, we thank Unity for providing us a free Personal license in order to create and publish this game.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
