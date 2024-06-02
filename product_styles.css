@@ -1,0 +1,241 @@
+/* Reset some default styling */
+body, h1, h2, p, img {
+    margin: 0;
+    padding: 0;
+}
+
+/* General body styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(to bottom, white, gray);
+    color: #333;
+    padding-top: 100px; /* Increased top padding to account for the larger fixed header */
+}
+
+/* Header styling */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribute header elements evenly */
+    background-color: #333;
+    color: white;
+    padding: 20px 20px; /* Increased padding */
+    z-index: 1000;
+    height: 90px; /* Increased height */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+}
+
+    #header img {
+        border-radius: 50%;
+    }
+
+#header-title {
+    margin-left: 10px;
+    font-size: 36px; /* Larger font size */
+}
+
+#nav-bar {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin-right: 30px;
+}
+
+    .nav-link:hover {
+        text-decoration: underline;
+    }
+
+/* Features section styling */
+#Features {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+    #Features div {
+        flex: 1;
+        text-align: center;
+        margin: 10px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #Features img {
+        margin-bottom: 10px;
+    }
+
+/* Video description section styling */
+#Video_Description {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #eaeaea;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+/* Products section styling */
+#Products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+#product-img {
+    margin-bottom: 20px;
+}
+
+.product-box {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.price {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    min-width: 250px;
+}
+
+.button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .button:hover {
+        background-color: #555;
+    }
+
+/* Form section styling */
+#formsec {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#email {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#submit {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    #submit:hover {
+        background-color: #555;
+    }
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+    body {
+        padding-top: 100px; /* Adjusted top padding to accommodate the fixed header */
+    }
+
+    #header {
+        flex-direction: column;
+        align-items: flex-start;
+        height: 120px; /* Increased height of the header */
+        padding: 20px; /* Increased padding for better mobile view */
+    }
+
+    #header-title {
+        font-size: 24px;
+        margin-left: 80px;
+    }
+
+    #header-img {
+        width: 50px; /* Adjusted size of the header image */
+        margin-left: 155px;
+    }
+
+    #nav-bar {
+        display: flex;
+        gap: 15px;
+        width: auto; /* Set width to auto */
+        margin-top: 10px; /* Added margin to separate the nav-links from the header */
+    }
+
+    .nav-link {
+        padding: 5px; /* Adjusted padding for navigation links */
+        font-size: 14px; /* Adjusted font size for navigation links */
+    }
+
+    #Features {
+        flex-direction: column;
+        margin-top: 75px; /* Added margin to push down the content */
+    }
+
+        #Features div {
+            margin: 10px 0;
+        }
+
+        #Features h2 {
+            font-size: 18px; /* Adjusted font size for feature headings */
+        }
+
+        #Features p {
+            font-size: 14px; /* Adjusted font size for feature paragraphs */
+        }
+
+    #Video_Description iframe {
+        width: 100%;
+        height: auto;
+    }
+
+    #Products {
+        padding: 20px 10px;
+    }
+
+    .product-box {
+        flex-direction: column;
+    }
+
+    .price {
+        margin-bottom: 20px;
+    }
+}
