@@ -328,7 +328,7 @@ a#tribute_page {
         }
 
     .details {
-        text-align: center; /* Center details for better mobile view */
+        text-align: left; /* Center details for better mobile view */
     }
 
     .detail {
