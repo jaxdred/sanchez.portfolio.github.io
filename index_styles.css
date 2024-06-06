@@ -5,16 +5,44 @@ body {
     color: white;
 }
 
-header {
-    background-color: #444444;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    z-index: 1000;
+    padding: 20px 0; /* Increased padding */
 }
+
+section {
+    scroll-margin-top: 80px; /* Adjust based on the height of your fixed navbar */
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+    .nav-links li {
+        margin: 0 20px;
+    }
+
+    .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 20px; /* Increased font size */
+        padding: 16px 25px; /* Increased padding */
+        transition: background 0.2s;
+    }
+
+        .nav-links a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
 
 h1 {
     margin: 0 auto;
@@ -46,7 +74,11 @@ a#tribute_page {
 #projects {
     text-align: center;
     padding: 20px; /* Adjust padding as needed */
-    margin-top: 100px; /* Retain original margin for desktop */
+    margin-top: 200px; /* Retain original margin for desktop */
+}
+
+.two {
+    margin-top: 30px;
 }
 
     #projects .projects {
@@ -105,7 +137,7 @@ a#tribute_page {
 #author-info {
     text-align: center;
     padding: 20px;
-    margin-top: 40px; /* Retain original margin for desktop */
+    margin-top: 200px; /* Retain original margin for desktop */
 }
 
     #author-info h1 {
@@ -162,21 +194,51 @@ a#tribute_page {
         margin-right: 10px;
     }
 
-.external-sites {
-    margin-top: 175px; /* Retain original margin for desktop */
+.contact {
+    padding: 100px 20px;
+    color: white;
+    text-align: center;
     align-items: center;
+    margin-top: 200px;
+}
+
+.contact-header {
+    margin-bottom: 50px;
+}
+
+    .contact-header h2 {
+        font-size: 2.5em;
+    }
+
+    .contact-header p {
+        font-size: 1.2em;
+    }
+
+.external-sites {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .fb img,
-.indeed img {
-    width: 20px; /* Retain original size for desktop */
+.github img {
+    width: 50px; /* Retain original size for desktop */
     height: auto;
     transition: transform 0.3s; /* Add transition for smooth hover effect */
-    margin-right: 25px;
+    margin-right: 24px;
+}
+
+.indeed img {
+    width: 35px;
+    height: 50px;
+    transition: transform 0.3s; /* Add transition for smooth hover effect */
+    margin-right: 31px;
 }
 
     .fb img:hover,
-    .indeed img:hover {
+    .indeed img:hover,
+    .github img:hover {
         transform: scale(1.1); /* Scale the icon on hover */
     }
 
@@ -191,11 +253,12 @@ a#tribute_page {
 
     #author-info h1 {
         font-size: 30px; /* Adjust font size for medium screens */
+ 
     }
 }
 
 @media only screen and (max-width: 480px) {
-    header {
+    .navbar {
         display: block;
         text-align: center;
     }
@@ -242,7 +305,7 @@ a#tribute_page {
             }
 
     #author-info {
-        margin-top: 20px; /* Adjust margin for small screens */
+        margin-top: 100px; /* Adjust margin for small screens */
     }
 
         #author-info h1 {
@@ -268,37 +331,41 @@ a#tribute_page {
         text-align: center; /* Center details for better mobile view */
     }
 
-    @media only screen and (max-width: 480px) {
-        .detail {
-            flex-direction: row; /* Keep details in a row */
-            justify-content: flex-start; /* Center items horizontally */
-            margin-bottom: 15px; /* Adjust margin for spacing */
+    .detail {
+        flex-direction: row; /* Keep details in a row */
+        justify-content: flex-start; /* Center items horizontally */
+        margin-bottom: 15px; /* Adjust margin for spacing */
+    }
+
+        .detail img {
+            width: 30px; /* Adjust size for better responsiveness */
+            margin-right: 10px; /* Maintain space between icon and text */
+            margin-bottom: 0; /* Remove bottom margin */
         }
 
-            .detail img {
-                width: 30px; /* Adjust size for better responsiveness */
-                margin-right: 10px; /* Maintain space between icon and text */
-                margin-bottom: 0; /* Remove bottom margin */
-            }
-
-            .detail p {
-                font-size: 16px; /* Adjust font size for better readability on mobile */
-                margin: 0; /* Remove margin */
-            }
-    }
+        .detail p {
+            font-size: 16px; /* Adjust font size for better readability on mobile */
+            margin: 0; /* Remove margin */
+        }
 
     .external-sites {
         margin-top: 40px; /* Adjust margin for better spacing on mobile */
         text-align: center; /* Center icons for better mobile view */
+        justify-content: center; /* Center the flex items */
+        flex-wrap: wrap; /* Allow items to wrap on smaller screens */
     }
 
         .external-sites a {
-            margin: 0 -50px; /* Add some spacing between icons */
-            margin-left: 99px;
+            margin: 0 10px; /* Adjust spacing between icons */
         }
 
     .fb img,
-    .indeed img {
+    .indeed img,
+    .github img {
         width: 30px; /* Adjust size for better responsiveness */
     }
+}
+
+.contact {
+    margin-top: 1px;
 }
